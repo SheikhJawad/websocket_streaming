@@ -1,0 +1,21 @@
+ 
+# Ignore the include directory
+include/
+
+# Ignore the lib directory
+lib/
+
+# Ignore the scripts directory
+scripts/
+
+# Ignore Python virtual environment (if any)
+env/
+venv/
+
+# Ignore compiled Python files
+__pycache__/
+*.py[cod]
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
