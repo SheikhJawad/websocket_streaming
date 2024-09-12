@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import  *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-# from django.contrib.auth.models import Group
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -45,7 +44,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         
         token['is_admin'] = is_admin
         token['is_super_admin'] = is_super_admin
-        token['websocket_url'] = 'http://127.0.0.1:8000/api/stream/'  # Update this URL accordingly
+        token['websocket_url'] = 'http://127.0.0.1:8000/api/stream/'  
 
         return token
 
@@ -60,7 +59,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data.update({
             'is_admin': is_admin,
             'is_super_admin': is_super_admin,
-            'websocket_url': 'http://127.0.0.1:8000/api/stream/',  # Update this URL accordingly
+            'websocket_url': 'http://127.0.0.1:8000/api/stream/',  
         })
 
         return data

@@ -4,10 +4,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.shortcuts import render
-from .models import User, Role, UserRole, CameraFeed, SystemConfiguration, EventLog
+from .models import *
 from .serializers import*
 from .permissions import IsSuperAdmin, IsAdmin
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -43,12 +42,24 @@ class ObtainTokenView(TokenObtainPairView):
 class RefreshTokenView(TokenRefreshView):
     pass
 
+
+
 class CameraFeedViewSet(viewsets.ModelViewSet):
     queryset = CameraFeed.objects.all()
     serializer_class = CameraFeedSerializer
-    permission_classes = [IsAuthenticated, IsAdmin]
+
+    def get_permissions(self):
+   
+        if self.request.method in ['POST', 'PUT', 'PATCH', 'DELETE']:
+         
+            self.permission_classes = [IsSuperAdmin]
+        else:
+            
+            self.permission_classes = [IsAdmin]
+        return [permission() for permission in self.permission_classes]
 
     def perform_create(self, serializer):
+      
         serializer.save(added_by=self.request.user)
         EventLog.objects.create(
             event_type='info',

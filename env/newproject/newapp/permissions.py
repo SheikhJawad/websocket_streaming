@@ -29,12 +29,29 @@
 #     queryset = EventLog.objects.all()  
 #     serializer_class = EventLogSerializer
 #     permission_classes = [IsAuthenticated, IsSuperAdmin]  # Super Admins can view logs
-from rest_framework import permissions
+# from rest_framework import permissions
 
-class IsSuperAdmin(permissions.BasePermission):
-    def has_permission(self, request, view):
-        return request.user.userrole_set.filter(role__name='super_admin').exists()
+# class IsSuperAdmin(permissions.BasePermission):
+#     def has_permission(self, request, view):
+#         return request.user.userrole_set.filter(role__name='super_admin').exists()
 
-class IsAdmin(permissions.BasePermission):
+# class IsAdmin(permissions.BasePermission):
+#     def has_permission(self, request, view):
+#         return request.user.userrole_set.filter(role__name='admin').exists()
+
+from rest_framework.permissions import BasePermission
+
+class IsSuperAdmin(BasePermission):
+    """
+    Allows access only to superadmins (is_superuser=True).
+    """
     def has_permission(self, request, view):
-        return request.user.userrole_set.filter(role__name='admin').exists()
+        return request.user and request.user.is_superuser
+
+class IsAdmin(BasePermission):
+    """
+    Allows access only to admins (is_staff=True, is_superuser=False).
+    """
+    def has_permission(self, request, view):
+        return request.user and request.user.is_staff and not request.user.is_superuser
+

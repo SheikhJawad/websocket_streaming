@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import *
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import CameraFeed
 admin.site.register(User)
 admin.site.register(UserRole)
 admin.site.register(Role)

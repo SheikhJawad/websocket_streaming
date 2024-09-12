@@ -49,6 +49,7 @@ class UserRole(models.Model):
 
 
 
+
 class CameraFeed(models.Model):
     CAMERA_STATUS_CHOICES = [
         ('active', 'Active'),
