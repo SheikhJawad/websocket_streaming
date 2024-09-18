@@ -1,0 +1,12 @@
+WARNING 2024-09-15 18:03:48,212 <console> This is a warning message.
+ERROR 2024-09-15 18:03:48,225 <console> This is an error message.
+WARNING 2024-09-16 10:15:29,191 log Not Found: /favicon.ico
+WARNING 2024-09-16 10:15:29,194 runserver HTTP GET /favicon.ico 404 [0.09, 127.0.0.1:10051]
+WARNING 2024-09-16 10:16:31,911 log Method Not Allowed: /api/api/token/
+WARNING 2024-09-16 10:16:31,912 runserver HTTP GET /api/api/token/ 405 [0.09, 127.0.0.1:10048]
+WARNING 2024-09-16 10:21:25,927 log Not Found: /
+WARNING 2024-09-16 10:21:25,930 runserver [33mHTTP GET / 404 [0.13, 127.0.0.1:6518][0m
+WARNING 2024-09-16 10:22:35,347 log Not Found: /api/token/
+WARNING 2024-09-16 10:22:35,349 runserver [33mHTTP GET /api/token/ 404 [0.03, 127.0.0.1:6537][0m
+WARNING 2024-09-16 10:22:44,851 log Method Not Allowed: /api/api/token/
+WARNING 2024-09-16 10:22:44,853 runserver [31;1mHTTP GET /api/api/token/ 405 [0.24, 127.0.0.1:6537][0m
