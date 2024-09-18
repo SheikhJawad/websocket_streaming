@@ -170,17 +170,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# settings.py
+
 
 
 import os
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-# Define the base directory
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Ensure the logs directory exists
+
 LOG_DIR = os.path.join(BASE_DIR, 'logs')
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
@@ -199,14 +199,14 @@ LOGGING = {
         },
     },
     'handlers': {
-        # Error log file handler
+        
         'file_error': {
             'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(LOG_DIR, 'errors.log'),
             'formatter': 'verbose',
-            'maxBytes': 1024 * 1024 * 5,  # 5MB max file size
-            'backupCount': 3,  # Keep 3 old log files
+            'maxBytes': 1024 * 1024 * 5,  
+            'backupCount': 3, 
         },
         
         'file_warning': {
@@ -214,28 +214,28 @@ LOGGING = {
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(LOG_DIR, 'warnings.log'),
             'formatter': 'verbose',
-            'maxBytes': 1024 * 1024 * 5,  # 5MB max file size
-            'backupCount': 3,  # Keep 3 old log files
+            'maxBytes': 1024 * 1024 * 5,  
+            'backupCount': 3,  
         },
-        # Info log file handler
+    
         'file_info': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(LOG_DIR, 'info.log'),
             'formatter': 'verbose',
-            'maxBytes': 1024 * 1024 * 5,  # 5MB max file size
-            'backupCount': 3,  # Keep 3 old log files
+            'maxBytes': 1024 * 1024 * 5,  
+            'backupCount': 3, 
         },
-        # Debug log file handler
+       
         'file_debug': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(LOG_DIR, 'debug.log'),
             'formatter': 'verbose',
-            'maxBytes': 1024 * 1024 * 5,  # 5MB max file size
-            'backupCount': 3,  # Keep 3 old log files
+            'maxBytes': 1024 * 1024 * 5,  
+            'backupCount': 3,  
         },
-        # Console output for real-time logs
+       
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
@@ -243,7 +243,7 @@ LOGGING = {
         },
     },
     'loggers': {
-        # Main logger for the project
+       
         'newproject': {
             'handlers': ['file_error', 'file_warning', 'file_info', 'file_debug', 'console'],
             'level': 'DEBUG',
