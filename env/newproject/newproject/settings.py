@@ -38,7 +38,6 @@ CHANNEL_LAYERS = {
 
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'channels','daphne',
@@ -119,11 +118,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Camera',
         'USER': 'postgres',
-        'PASSWORD': '03020430376',
-        'HOST': 'localhost',
+        'PASSWORD': '406991102',  
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
+
 
 AUTH_USER_MODEL = 'newapp.User'
 
@@ -159,11 +159,14 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
 import os
+
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+DEBUG = True
+
 
 
 # Default primary key field type

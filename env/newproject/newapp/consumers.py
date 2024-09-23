@@ -280,13 +280,10 @@
 ## Adding logger
 import json
 import subprocess
-import io
 import logging
-import os
 from channels.generic.websocket import WebsocketConsumer
-from .models import *
+from newapp.models import CameraFeed
 
-# Initialize logger
 logger = logging.getLogger(__name__)
 
 class VideoStreamConsumer(WebsocketConsumer):

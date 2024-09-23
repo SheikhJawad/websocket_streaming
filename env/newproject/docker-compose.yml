@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    build: .  
+    container_name: newproject-web
+    environment:
+      - DJANGO_SETTINGS_MODULE=newproject.settings
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+      - ./staticfiles:/usr/src/app/staticfiles 
+
+  db:
+    image: postgres:13
+    container_name: newproject-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: Camera
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 406991102
+
+volumes:
+  postgres_data:
