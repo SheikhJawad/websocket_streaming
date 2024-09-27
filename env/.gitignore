@@ -11,6 +11,8 @@ scripts/
 # Ignore Python virtual environment (if any)
 env/
 venv/
+.env
+
 
 # Ignore compiled Python files
 __pycache__/

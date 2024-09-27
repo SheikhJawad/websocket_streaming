@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from logging.handlers import RotatingFileHandler
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%4@lc4%+5xr6_c9#599d1-kc!2&l_icj)4_$k1(9kxz=sf5bz%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -113,16 +115,28 @@ ASGI_APPLICATION = 'newproject.asgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG') == 'True'  
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Camera',
-        'USER': 'postgres',
-        'PASSWORD': '406991102',  
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
+
+
+
 
 
 AUTH_USER_MODEL = 'newapp.User'
@@ -159,7 +173,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-import os
 
 
 STATIC_URL = '/static/'
@@ -176,9 +189,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-import os
-from logging.handlers import RotatingFileHandler
-from pathlib import Path
+
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
