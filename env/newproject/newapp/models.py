@@ -59,13 +59,13 @@ class CameraFeed(models.Model):
 
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=255)
-    feed_url = models.CharField(max_length=200)  # Change URLField to CharField
+    feed_url = models.CharField(max_length=200)  
     status = models.CharField(
         max_length=20,
         choices=CAMERA_STATUS_CHOICES,
         default='inactive'
     )
-    is_streaming = models.BooleanField(default=False)  # To control streaming
+    is_streaming = models.BooleanField(default=False)  
     added_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
